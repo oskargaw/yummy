@@ -10,7 +10,7 @@
         <router-link class="nav-link divider" to="/">
           <li class="nav-item">Home</li>
         </router-link>
-        <router-link class="nav-link divider" to="/fridge">
+        <router-link class="nav-link divider" to="/category">
           <li class="nav-item">Fridge</li>
         </router-link>
         <router-link class="nav-link divider" to="/login">
