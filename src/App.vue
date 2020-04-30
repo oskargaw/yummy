@@ -34,6 +34,10 @@
         <button @click="deleteRecipe(recipe)">Remove</button>
       </li>
     </ul>
+
+    <div class="content">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -45,18 +49,18 @@ export default {
   data() {
     return {
       recipes: [],
-      newRecipe: ""
+      newRecipe: "",
     };
   },
   firestore() {
     return {
-      recipes: db.collection("recipes")
+      recipes: db.collection("recipes"),
     };
   },
   methods: {
     addRecipe: function() {
       this.$firestore.recipes.add({
-        name: this.newRecipe
+        name: this.newRecipe,
       });
       this.newRecipe = "";
     },
