@@ -19,3 +19,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+
+#firebase config
+firebase.js
+
+#spoonacular API config
+spoonacular.js
