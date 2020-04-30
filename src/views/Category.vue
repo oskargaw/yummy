@@ -1,3 +1,6 @@
+<style lang="scss">
+@import "@/assets/scss/Category.scss";
+</style>
 <template>
     <div class="category">
         <div class="d-md-flex h-md-100 align-items-center">
