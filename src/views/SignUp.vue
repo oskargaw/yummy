@@ -2,11 +2,11 @@
 @import "@/assets/scss/Login.scss";
 </style>
 <template>
-  <div class="login">
+  <div class="signup">
     <img class="wave" src="@/assets/wave.png" />
     <div class="LoginContainer">
       <div class="img">
-        <img src="@/assets/undraw_cooking_lyxy.svg" />
+        <img src="@/assets/undraw_barbecue_3x93.svg" />
       </div>
       <div class="login-content">
         <form action="index.html">
@@ -30,7 +30,41 @@
               <input type="password" class="input" />
             </div>
           </div>
-          <a id="forgot" href="#">Forgot Password?</a>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+              <h5>Repeat password</h5>
+              <input type="password" class="input" />
+            </div>
+          </div>
+          <div class="input-div email">
+            <div class="i">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="div">
+              <h5>E-mail</h5>
+              <input type="email" class="input" />
+            </div>
+          </div>
+          <div class="div social-media">
+            <a href="#">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </div>
           <input type="submit" class="btn" value="Login" />
         </form>
       </div>
