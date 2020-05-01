@@ -23,7 +23,7 @@
       </ul>
     </div>
 
-    <div>
+    <!-- <div>
       <input type="text" v-model="newRecipe" @keyup.enter="addRecipe" />
       <button @click="addRecipe">Add Recipe</button>
     </div>
@@ -33,7 +33,7 @@
         {{ recipe.name }} -
         <button @click="deleteRecipe(recipe)">Remove</button>
       </li>
-    </ul>
+    </ul> -->
 
     <div class="content">
       <router-view />
