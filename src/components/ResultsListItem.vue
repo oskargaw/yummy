@@ -1,13 +1,10 @@
 <template>
   <div class="results-list-item">
     <div class="results-list-item__image">
-      <img
-        alt="recipe"
-        src="https://media.kaufland.com/images/PPIM/AP_Content_1010/std.lang.all/66/67/Asset_3306667.jpg"
-      />
+      <img alt="recipe" :src="imageLink" />
     </div>
-    <div class="results-list-item__title">Recipe</div>
-    <div class="results-list-item__description">Ingredients</div>
+    <div class="results-list-item__title">{{ title }}</div>
+    <div class="results-list-item__description">Ready in: {{ readyInMinutes }} mins</div>
   </div>
 </template>
 
@@ -17,6 +14,17 @@
 
 <script>
 export default {
-  name: "ResultsListItem"
+  name: "ResultsListItem",
+  props: {
+    id: Number,
+    image: String,
+    title: String,
+    readyInMinutes: String
+  },
+  computed: {
+    imageLink: function() {
+      return `https://spoonacular.com/recipeImages/${this.id}-312x231.jpg`;
+    }
+  }
 };
 </script>

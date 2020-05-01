@@ -29,23 +29,22 @@ export default {
   name: "home",
   data() {
     return {
-      recipePreferences: "",
+      recipePreferences: ""
     };
   },
   methods: {
     searchRecipe: function() {
       fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&query=${this.recipePreferences}&number=2`
+        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&query=${this.recipePreferences}&number=8`
       )
         .then(response => response.json())
         .then(json => {
           this.$store.commit("setResults", {
-            newResults: json.results,
+            newResults: json.results
           });
-          console.log(json.results)
-          this.$router.push('/results');
+          this.$router.push("/results");
         });
-    },
+    }
   }
 };
 </script>
