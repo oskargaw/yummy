@@ -1,0 +1,22 @@
+.results-list-item__image {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.results-list-item__title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+.results-list-item__description {
+  font-size: 18px;
+  margin-top: 4px;
+}
