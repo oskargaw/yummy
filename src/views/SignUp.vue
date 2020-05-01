@@ -73,7 +73,7 @@
 </template>
 <script>
 export default {
-  name: "signup",
+  name: "Signup",
   mounted: function() {
     const inputs = document.querySelectorAll(".input");
 

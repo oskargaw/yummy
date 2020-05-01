@@ -39,7 +39,7 @@
 </template>
 <script>
 export default {
-  name: "signup",
+  name: "Login",
   mounted: function() {
     const inputs = document.querySelectorAll(".input");
 
