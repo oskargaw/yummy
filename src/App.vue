@@ -107,6 +107,20 @@ export default {
         });
     },
   },
+  mounted() {
+    const links = document.querySelectorAll(".nav-link")
+    const logo = document.querySelector(".navbar-brand")
+
+    function hide() {
+      let toggle = document.querySelector('#toggle')
+      toggle.checked = false
+    }
+
+    links.forEach(link => {
+      link.onclick = hide
+    })
+    logo.onclick = hide
+  }
 };
 </script>
 

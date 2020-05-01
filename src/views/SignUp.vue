@@ -65,7 +65,7 @@
               <i class="fab fa-youtube"></i>
             </a>
           </div>
-          <input type="submit" class="btn" value="Login" />
+          <input type="submit" class="btn" value="Sign up" />
         </form>
       </div>
     </div>
