@@ -35,27 +35,6 @@
       </li>
     </ul>
 
-    <div>
-      Hungry? What would you like to eat?
-      <input
-        type="text"
-        v-model="recipePreferences"
-        @keyup.enter="searchRecipe"
-      />
-      <button @click="searchRecipe">Search for recipe</button>
-    </div>
-
-    <table v-show="receivedRecipes.length > 0">
-      <tr>
-        <th>Recipe for</th>
-        <th>Ready in minutes</th>
-      </tr>
-      <tr v-for="recipe in receivedRecipes" :key="recipe">
-        <td>{{ recipe.title }}</td>
-        <td>{{ recipe.readyInMinutes }}</td>
-      </tr>
-    </table>
-
     <div class="content">
       <router-view />
     </div>
@@ -64,26 +43,23 @@
 
 <script>
 import { db } from "./firebase";
-import { spoonacularApiKey } from "./spoonacular";
 
 export default {
   name: "app",
-
+  
   data() {
     return {
       recipes: [],
       newRecipe: "",
-      recipePreferences: "",
-      receivedRecipes: [],
     };
   },
-
+  
   firestore() {
     return {
       recipes: db.collection("recipes"),
     };
   },
-
+  
   methods: {
     addRecipe: function() {
       this.$firestore.recipes.add({
@@ -91,20 +67,9 @@ export default {
       });
       this.newRecipe = "";
     },
-
+    
     deleteRecipe: function(recipe) {
       this.$firestore.recipes.doc(recipe[".key"]).delete();
-    },
-
-    searchRecipe: function() {
-      fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&query=${this.recipePreferences}&number=2`
-      )
-        .then(response => response.json())
-        .then(json => {
-          this.receivedRecipes = json.results;
-          console.log(json.results);
-        });
     },
   },
   mounted() {
