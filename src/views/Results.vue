@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 @import "src/assets/scss/Results.scss";
 </style>
 
