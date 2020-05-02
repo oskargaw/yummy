@@ -1,5 +1,5 @@
 <template>
-  <div class="results-list-item">
+  <div class="results-list-item" @click="showRecipeDetails">
     <div class="results-list-item__image">
       <img alt="recipe" :src="imageLink" />
     </div>
@@ -24,6 +24,14 @@ export default {
   computed: {
     imageLink: function() {
       return `https://spoonacular.com/recipeImages/${this.id}-312x231.jpg`;
+    }
+  },
+  methods: {
+    showRecipeDetails: function() {
+      this.$store.commit("setRecipeDetailsId", {
+        selectedRecipeId: this.id
+      });
+      this.$router.push("/recipe");
     }
   }
 };
