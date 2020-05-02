@@ -31,7 +31,7 @@
             </div>
           </div>
           <a id="forgot" href="#">Forgot Password?</a>
-          <input type="submit" class="btn" value="Login" />
+          <input type="submit" class="btns" value="Login" />
         </form>
       </div>
     </div>

@@ -1,3 +1,8 @@
+h2,
+h5 {
+    color: black;
+}
+
 .btn-success {
     background-color: #33C292 !important;
 }
@@ -8,6 +13,18 @@
 
 .delete {
     cursor: pointer;
+}
+
+.firstp {
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.seccondp {
+    font-weight: lighter;
+    margin: 0 auto;
+    font-size: 0.8rem;
 }
 
 .fourth {
@@ -33,42 +50,48 @@
     font-size: 1rem;
     font-weight: 400;
     line-height: 1;
-    margin: 20px;
     padding: 1.2em 2.8em;
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+    margin: 0 auto;
 }
 
 .fourth:hover {
     background-position: 0;
 }
 
-p {
-    color: #33C292;
-    font-size: 1.2rem;
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-}
-
 .btn:hover,
 .btn:focus {
     color: #fff;
     outline: 0;
+    margin: 0 auto;
+}
+
+.myCol {
+    margin: 1rem 1rem 1rem 1rem;
+    padding: 30px;
+    border: 1px solid black;
 }
 
 @media screen and (max-width: 1200px) {
     .fourth {
-        padding: 1rem;
+        padding: 0.9rem;
+        margin: 0.8rem auto;
+    }
+    .myCol {
+        margin: 0.4rem 0.4rem 0.4rem 0.4rem;
     }
 }
 
 @media screen and (max-width: 900px) {
     .fourth {
         padding: 1rem;
-        margin: 0 auto;
+        margin: 1rem auto;
+    }
+    .myInput {
+        width: auto;
     }
 }
