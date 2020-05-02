@@ -1,0 +1,74 @@
+.btn-success {
+    background-color: #33C292 !important;
+}
+
+.btn-dark {
+    background-color: #3F3D56 !important;
+}
+
+.delete {
+    cursor: pointer;
+}
+
+.fourth {
+    border-color: #33C292;
+    color: #fff;
+    background-image: linear-gradient(45deg, #33C292 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    -webkit-transition: background 300ms ease-in-out;
+    transition: background 300ms ease-in-out;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    border: 2px solid #3F3D56;
+    border-radius: 0.6em;
+    color: #3F3D56;
+    cursor: pointer;
+    display: -webkit-box;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1.2em 2.8em;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.fourth:hover {
+    background-position: 0;
+}
+
+p {
+    color: #33C292;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #fff;
+    outline: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .fourth {
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .fourth {
+        padding: 1rem;
+        margin: 0 auto;
+    }
+}
