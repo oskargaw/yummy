@@ -3,7 +3,7 @@
     <div class="first-row">
       <div class="recipe-details__info">
         <div class="row-title">{{ recipeTitle }}</div>
-        <button class="recipe-details__info-button">Add to favourites</button>
+        <button @click="addToFavourites" class="recipe-details__info-button">Add to favourites</button>
         <div class="recipe-details__info-general">
           <div class="recipe-details__info-general-item">
             <div class="recipe-details__info-general-item--first-row">{{ ingredientsNumber }}</div>
@@ -53,6 +53,8 @@
 
 <script>
 import { spoonacularApiKey } from "../spoonacular";
+import { auth } from "../firebase"
+import { db } from "../firebase"
 
 export default {
   name: "RecipeDetails",
@@ -65,8 +67,17 @@ export default {
       calories: null,
       image: "",
       ingredients: [],
-      instructions: ""
+      instructions: "",
     };
+  },
+  methods: {
+    addToFavourites: function() {
+      db.collection('usersData').doc(auth.currentUser.uid).collection('favourites').doc(this.recipeTitle).set({
+        recipeId: this.receivedRecipeDetailsId,
+        recipeTitle: this.recipeTitle,
+        readyInMinutes: this.readyInMinutes
+      })
+    }
   },
   mounted() {
     this.receivedRecipeDetailsId = this.$store.state.recipeDetailsId;
@@ -85,6 +96,6 @@ export default {
         this.summary = json.summary;
         this.instructions = json.instructions;
       });
-  }
+  },
 };
 </script>

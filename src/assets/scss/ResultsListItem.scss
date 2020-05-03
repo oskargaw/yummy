@@ -24,3 +24,18 @@
   font-size: 18px;
   margin-top: 16px;
 }
+
+.favourites-list-item__info-button {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: #fdf6fb;
+  border-color: #ee782f;
+  margin-top: 0.5rem;
+  outline: none;
+
+  @media only screen and (max-width: 1000px) {
+    margin-bottom: 2rem;
+  }
+}
