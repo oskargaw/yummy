@@ -72,7 +72,17 @@
 .myCol {
     margin: 1rem 1rem 1rem 1rem;
     padding: 30px;
-    border: 1px solid black;
+    border: 1px solid #3F3D56;
+    -webkit-transition: all .55s ease;
+    -moz-transition: all .55s ease;
+    -ms-transition: all .55s ease;
+    -o-transition: all .55s ease;
+}
+
+.myCol:hover {
+    cursor: pointer;
+    border: 1px solid #33C292;
+    color: #33C292;
 }
 
 @media screen and (max-width: 1200px) {

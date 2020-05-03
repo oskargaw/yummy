@@ -74,14 +74,14 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-5 myCol">African</div>
-              <div class="col-md-5 myCol">German</div>
+              <div @click="searchByCuisine('african')" class="col-md-5 myCol">African</div>
+              <div @click="searchByCuisine('german')" class="col-md-5 myCol">German</div>
               <div class="w-100"></div>
-              <div class="col-md-5 myCol">Italian</div>
-              <div class="col-md-5 myCol">Chinese</div>
+              <div @click="searchByCuisine('italian')" class="col-md-5 myCol">Italian</div>
+              <div @click="searchByCuisine('chinese')" class="col-md-5 myCol">Chinese</div>
             </div>
             <div class="row">
-              <button class="fourth">Find a random recipe</button>
+              <button @click="searchRandomRecipe" class="fourth">Find a random recipe</button>
             </div>
           </div>
         </div>
@@ -101,7 +101,21 @@ export default {
       ingredientText: ""
     };
   },
-  methods: {
+  computed:{
+      formattedArray: function(){
+        let ingreds = ''
+        let arr = this.ingredients
+         arr.forEach(element => {
+            if(!(arr.indexOf(element) === arr.length-1)) {
+            ingreds = ingreds + element.words + ',+'
+            } else {
+            ingreds = ingreds + element.words
+            }
+        });
+      return ingreds.toString()
+    }
+  },  
+    methods: {
     addIngredient: function() {
       this.ingredients.push({
         words: this.ingredientText
@@ -112,11 +126,35 @@ export default {
       this.ingredients.splice(index, 1);
     },
     deleteAll: function() {
-      this.ingredients = [];
+      this.ingredients = []
     },
     searchRecipe: function() {
       fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&findByIngredients?ingredients=${this.ingredients}&number=2`
+        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&findByIngredients?ingredients=${this.formattedArray}&number=8`
+      )
+        .then(response => response.json())
+        .then(json => {
+          this.$store.commit("setResults", {
+            newResults: json.results
+          });
+          this.$router.push("/results");
+        });
+    },
+    searchRandomRecipe: function() {
+      fetch(
+        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&random&number=9`
+      )
+        .then(response => response.json())
+        .then(json => {
+          this.$store.commit("setResults", {
+            newResults: json.results
+          });
+          this.$router.push("/results");
+        });
+    },
+    searchByCuisine: function(item) {
+      fetch(
+        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&cuisine=${item}`
       )
         .then(response => response.json())
         .then(json => {
