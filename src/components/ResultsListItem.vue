@@ -4,7 +4,10 @@
       <img alt="recipe" :src="imageLink" />
     </div>
     <div class="results-list-item__title">{{ title }}</div>
-    <div class="results-list-item__description">Ready in: {{ readyInMinutes }} mins</div>
+    <div
+      class="results-list-item__description"
+      v-show="readyInMinutes != null"
+    >Ready in: {{ readyInMinutes }} mins</div>
   </div>
 </template>
 
