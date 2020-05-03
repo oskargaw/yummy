@@ -18,7 +18,7 @@
               <i class="fas fa-envelope"></i>
             </div>
             <div class="div">
-              <h5>Email</h5>
+              <h5>E-mail</h5>
               <input v-model="email" @keyup.enter="login" type="email" class="input" />
             </div>
           </div>
@@ -31,7 +31,20 @@
               <input v-model="password" @keyup.enter="login" type="password" class="input" />
             </div>
           </div>
-          <a id="forgot" href="#">Forgot Password?</a>
+           <div class="div social">
+            <a @click="facebookSignIn">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a @click="twitterSignIn">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a @click="googleSignIn">
+              <i class="fab fa-google"></i>
+            </a>
+            <a>
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
           <button @click="login" class="btn">Login</button>
         </form>
       </div>
@@ -40,6 +53,7 @@
 </template>
 <script>
 import { auth } from "../firebase";
+import { firebase } from "@firebase/app"
 
 export default {
   name: "Login",
@@ -61,6 +75,46 @@ export default {
           document.querySelector(".error").innerHTML = err.message
         })
         e.preventDefault()
+    },
+    googleSignIn: function() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    facebookSignIn: function() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    twitterSignIn: function() {
+      var provider = new firebase.auth.TwitterAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    githubSignIn: function() {
+      var provider = new firebase.auth.GithubAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
     }
   },
   mounted: function() {

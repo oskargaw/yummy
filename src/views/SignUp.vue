@@ -12,15 +12,6 @@
         <form>
           <img src="@/assets/undraw_profile_pic_ic5t.svg" />
           <h2 class="title">Welcome</h2>
-         <!-- <div class="input-div one">
-            <div class="i">
-              <i class="fas fa-user"></i>
-            </div>
-            <div class="div">
-              <h5>Username</h5>
-              <input v-model="username" type="text" class="input" />
-            </div>
-          </div>-->
           <div class="error"></div>
           <div class="input-div email">
             <div class="i">
@@ -40,27 +31,18 @@
               <input v-model="password" @keyup.enter="signUp" type="password" class="input" />
             </div>
           </div>
-          <!--<div class="input-div pass">
-            <div class="i">
-              <i class="fas fa-lock"></i>
-            </div>
-            <div class="div">
-              <h5>Repeat password</h5>
-              <input v-model="repeatPassword" type="password" class="input" />
-            </div>
-          </div>-->
           <div class="div social">
-            <a>
+            <a @click="facebookSignUp">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a>
+            <a @click="twitterSignUp">
               <i class="fab fa-twitter"></i>
             </a>
-            <a @click="googleSignIn">
+            <a @click="googleSignUp">
               <i class="fab fa-google"></i>
             </a>
-            <a>
-              <i class="fab fa-instagram"></i>
+            <a @click="githubSignUp">
+              <i class="fab fa-github"></i>
             </a>
           </div>
           <button @click="signUp" class="btn">Sign up</button>
@@ -77,17 +59,15 @@ export default {
   name: "Signup",
   data() {
     return {
-      username: '',
-      password: '',
-      repeatPassword: '',
-      email: ''
+      email: '',
+      password: ''
     }
   },
   methods: {
     signUp: function(e) {
       auth.createUserWithEmailAndPassword(this.email, this.password).
         then(user => {
-          console.log(`Signed up as ${user.user.email}`)
+          console.log(`Signed up as ${user.email}`)
           this.$router.go({path: this.$router.path})
         },
         err => {
@@ -96,21 +76,46 @@ export default {
         })
         e.preventDefault()
     },
-    facebookSignIn: function() {
-
+    facebookSignUp: function() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed up as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
     },
-    twitterSignIn: function() {
-
+    twitterSignUp: function() {
+      var provider = new firebase.auth.TwitterAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed up as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
     },
-    googleSignIn: function() {
+    googleSignUp: function() {
       var provider = new firebase.auth.GoogleAuthProvider();
       auth.signInWithPopup(provider).then(function(result) {
         var user = result.user;
-        console.log(user)
+        console.log(`Signed up as ${user.email}`)
+        location.reload()
       }).catch(function(error) {
-        console.log(error)
+        console.log(error.message)
       });
     },
+    githubSignUp: function() {
+      var provider = new firebase.auth.GithubAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed up as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    }
   },
   mounted: function() {
     const inputs = document.querySelectorAll(".input");
