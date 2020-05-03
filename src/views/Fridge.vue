@@ -101,21 +101,21 @@ export default {
       ingredientText: ""
     };
   },
-  computed:{
-      formattedArray: function(){
-        let ingreds = ''
-        let arr = this.ingredients
-         arr.forEach(element => {
-            if(!(arr.indexOf(element) === arr.length-1)) {
-            ingreds = ingreds + element.words + ',+'
-            } else {
-            ingreds = ingreds + element.words
-            }
-        });
-      return ingreds.toString()
+  computed: {
+    formattedArray: function() {
+      let ingreds = "";
+      let arr = this.ingredients;
+      arr.forEach(element => {
+        if (!(arr.indexOf(element) === arr.length - 1)) {
+          ingreds = ingreds + element.words + ",+";
+        } else {
+          ingreds = ingreds + element.words;
+        }
+      });
+      return ingreds.toString();
     }
-  },  
-    methods: {
+  },
+  methods: {
     addIngredient: function() {
       this.ingredients.push({
         words: this.ingredientText
@@ -126,28 +126,28 @@ export default {
       this.ingredients.splice(index, 1);
     },
     deleteAll: function() {
-      this.ingredients = []
+      this.ingredients = [];
     },
     searchRecipe: function() {
       fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&findByIngredients?ingredients=${this.formattedArray}&number=8`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${spoonacularApiKey}&ingredients=${this.formattedArray}&number=9`
       )
         .then(response => response.json())
         .then(json => {
           this.$store.commit("setResults", {
-            newResults: json.results
+            newResults: json
           });
           this.$router.push("/results");
         });
     },
     searchRandomRecipe: function() {
       fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&random&number=9`
+        `https://api.spoonacular.com/recipes/random?apiKey=${spoonacularApiKey}&number=9`
       )
         .then(response => response.json())
         .then(json => {
           this.$store.commit("setResults", {
-            newResults: json.results
+            newResults: json.recipes
           });
           this.$router.push("/results");
         });
