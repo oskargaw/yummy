@@ -116,7 +116,7 @@ export default {
     },
     searchRecipe: function() {
       fetch(
-        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&query=${this.ingredients}&number=8`
+        `https://api.spoonacular.com/recipes/search?apiKey=${spoonacularApiKey}&findByIngredients?ingredients=${this.ingredients}&number=2`
       )
         .then(response => response.json())
         .then(json => {
