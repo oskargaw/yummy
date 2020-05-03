@@ -1,186 +1,195 @@
 .home {
-	min-height: calc(100vh - 90px);
-	width: 100 vw;
-	background: rgb(215,243,234);
-	background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(215,243,234,1) 100%);
+  min-height: calc(100vh - 90px);
+  width: 100 vw;
+  background: rgb(215, 243, 234);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(215, 243, 234, 1) 100%
+  );
 
-	.has-search {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		width: 30vw;
-		height: 4.5vh;
-		min-height: 20px;
+  .has-search {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    height: 4.5vh;
+    min-height: 20px;
 
-		.search {
-			padding-left: 5%;
-			padding-right: 20%;
-			border-radius: 2em;
-			height: 100%;
-			width: 100%;
-			font-size: 17px;
-			color: #2c3e50;
-			border: #2c3e50 solid 1px;
-		}
-		.form-control:focus {
-			outline: none;
-		}
-		.search:focus{
-			outline: none;
-			box-shadow: 0 0 2pt 1pt #2c3e50;
-		}
-		.lens {
-			position: absolute;
-			width: 17%;
-			height: 100%;
-			top: 50%;
-			left: 100%;
-			margin-right: -50%;
-			transform: translate(-100%, -50%);
-			border-radius: 2em;
-			font-size: 3vh;
-			background-color: transparent;
-			background-repeat: no-repeat;
-			border: none;
-			cursor: pointer;
-			overflow: hidden;
-			outline: none;
-			color: #2c3e50;
-		}
-		i {
-			position: absolute;
+    .search {
+      padding-left: 5%;
+      padding-right: 20%;
+      border-radius: 2em;
+      height: 100%;
+      width: 100%;
+      font-size: 17px;
+      color: #2c3e50;
+      border: #2c3e50 solid 1px;
+    }
+    .form-control:focus {
+      outline: none;
+    }
+    .search:focus {
+      outline: none;
+      box-shadow: 0 0 2pt 1pt #2c3e50;
+    }
+    .lens {
+      position: absolute;
+      width: 17%;
+      height: 100%;
+      top: 50%;
+      left: 100%;
+      margin-right: -50%;
+      transform: translate(-100%, -50%);
+      border-radius: 2em;
+      font-size: 3vh;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      border: none;
+      cursor: pointer;
+      overflow: hidden;
+      outline: none;
+      color: #2c3e50;
+    }
+    i {
+      position: absolute;
       top: 50%;
       left: 50%;
       margin-right: -50%;
-			transform: translate(-50%, -50%);
-			z-index: 2;
-			padding-right: 5%;
-		}
-	}
-	.text-bold {
-		font-weight: bold;
-		font-size: 2.5vw;
-	}
-	#up {
-		position: absolute;
-		top: 40%;
-		left: 30%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-	}
-	#like {
-		position: absolute;
-		top: 60%;
-		left: 62%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-	}
-	#better {
-		position: absolute;
-		top: 60%;
-		left: 78%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		font-size: 2.5vw;
-	}
-	#about {
-		position: absolute;
-		top: 66%;
-		left: 63%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		font-size: 1.8vw;
-	}
-	#eating {
-		position: absolute;
-		top: 65.8%;
-		left: 73.7%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		font-size: 2.2vw;
-	}
-	#everyone {
-		position: absolute;
-		top: 66%;
-		left: 84.8%;
-		margin-right: -50%;
-		transform: translate(-50%, -50%);
-		font-size: 1.2vw;
-	}
-	#burger {
-		display: none;
-	}
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      padding-right: 5%;
+    }
+  }
+  .text-bold {
+    font-weight: bold;
+    font-size: 2.5vw;
+  }
+  #up {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  #like {
+    position: absolute;
+    top: 60%;
+    left: 62%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+  #better {
+    position: absolute;
+    top: 60%;
+    left: 78%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5vw;
+  }
+  #about {
+    position: absolute;
+    top: 66%;
+    left: 63%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8vw;
+  }
+  #eating {
+    position: absolute;
+    top: 65.8%;
+    left: 73.7%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2vw;
+  }
+  #everyone {
+    position: absolute;
+    top: 66%;
+    left: 84.8%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2vw;
+  }
+  #burger {
+    display: none;
+  }
 
-	@media only screen and (max-width: 679px) {
-		min-height: calc(100vh - 60px);
-		background: white;
+  @media only screen and (max-width: 679px) {
+    min-height: calc(100vh - 60px);
+    background: white;
 
-		.has-search {
-			position: absolute;
-			top: 70%;
-			width: 60vw;
-			height: 50px;
-	
-			.search {
-				padding-left: 15%;
-				padding-right: 15%;
-				font-size: 18px;
-				text-align: center;
-				font-weight: bold;
-			}
-			.lens {
-				width: 13%;
-				margin-right: -50%;
-				transform: translate(-100%, -50%);
-				border-radius: 2em;
-				font-size: 20px;
-			}
-			i {
-				padding-right: 15%;
-			}
-		}
-		.text-bold {
-			font-size: 8vw;
-		}
-		#up {
-			top: 15%;
-			left: 50%;
-		}
-		#like {
-			top: 80%;
-			left: 19.5%;
-			font-size: 6.5vw;
-		}
-		#better {
-			top: 80%;
-			left: 60%;
-			font-size: 6.5vw;
-		}
-		#about {
-			top: 87%;
-			left: 18.5%;
-			font-size: 5vw;
-		}
-		#eating {
-			top: 86.8%;
-			left: 48%;
-			font-size: 6vw;
-		}
-		#everyone {
-			top: 87.1%;
-			left: 78.5%;
-			font-size: 3.5vw;
-		}
-		#burger {
-			display: block;
-			position: absolute;
-			height: 30vh;
-			top: 40%;
-			left: 50%;
-			margin-right: -50%;
-			transform: translate(-50%, -50%);
-		}
-	}
+    .has-search {
+      position: absolute;
+      top: 70%;
+      width: 60vw;
+      height: 50px;
+
+      .search {
+        padding-left: 15%;
+        padding-right: 15%;
+        font-size: 18px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .lens {
+        width: 13%;
+        margin-right: -50%;
+        transform: translate(-100%, -50%);
+        border-radius: 2em;
+        font-size: 20px;
+      }
+      i {
+        padding-right: 15%;
+      }
+    }
+    .text-bold {
+      font-size: 8vw;
+    }
+    #up {
+      top: 15%;
+      left: 50%;
+    }
+    #like {
+      top: 80%;
+      left: 19.5%;
+      font-size: 6.5vw;
+    }
+    #better {
+      top: 80%;
+      left: 60%;
+      font-size: 6.5vw;
+    }
+    #about {
+      top: 87%;
+      left: 18.5%;
+      font-size: 5vw;
+    }
+    #eating {
+      top: 86.8%;
+      left: 48%;
+      font-size: 6vw;
+    }
+    #everyone {
+      top: 87.1%;
+      left: 78.5%;
+      font-size: 3.5vw;
+    }
+    #burger {
+      display: block;
+      position: absolute;
+      height: 30vh;
+      top: 40%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .quote {
+    position: absolute;
+    bottom: 20;
+  }
 }

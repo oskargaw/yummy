@@ -19,6 +19,10 @@
     <div id="about">about food</div>
     <div id="eating" class="text-bold">is eating</div>
     <div id="everyone">~ literally everyone</div>
+    <div class="quote">
+      <div class="quote__text">{{ quote.text }}</div>
+      <div class="quote__author" v-show="quote.author != null">{{ quote.author }}</div>
+    </div>
   </div>
 </template>
 
@@ -29,8 +33,24 @@ export default {
   name: "home",
   data() {
     return {
-      recipePreferences: ""
+      recipePreferences: "",
+      quote: {}
     };
+  },
+  mounted() {
+    const min = 0;
+    const max = 1000;
+
+    const randomQuoteIndex = Math.floor(Math.random() * (max - min)) + min;
+
+    fetch("https://type.fit/api/quotes")
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(data) {
+        console.log(data[randomQuoteIndex]);
+        this.quote = data[randomQuoteIndex];
+      });
   },
   methods: {
     searchRecipe: function() {
