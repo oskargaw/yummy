@@ -53,6 +53,15 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Recipe.vue"),
   },
+  {
+    path: "/favourites",
+    name: "Favourites",
+    meta: {
+      requiresAuth: true
+    },
+    component: () =>
+      import("../views/Favourites.vue"),
+  },
 ];
 
 const router = new VueRouter({

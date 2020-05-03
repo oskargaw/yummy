@@ -1,1 +1,1 @@
-export const spoonacularApiKey = "fd9ea113a95b417c81aab3488f913195";
+export const spoonacularApiKey = "3f2d5709e1f6450997e340d8fb0a5233";

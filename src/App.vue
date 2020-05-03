@@ -34,19 +34,6 @@
         <img alt="logo" src="./assets/logo_transparent.png" id="logo-bottom" />
       </ul>
     </div>
-
-    <!-- <div>
-      <input type="text" v-model="newRecipe" @keyup.enter="addRecipe" />
-      <button @click="addRecipe">Add Recipe</button>
-    </div>
-
-    <ul>
-      <li v-for="recipe in recipes" :key="recipe">
-        {{ recipe.name }} -
-        <button @click="deleteRecipe(recipe)">Remove</button>
-      </li>
-    </ul> -->
-
     <div class="content">
       <router-view />
     </div>
@@ -63,8 +50,6 @@ export default {
   
   data() {
     return {
-      recipes: [],
-      newRecipe: "",
       isLoggedIn: false,
       currentUser: false
     };
@@ -77,16 +62,6 @@ export default {
   },
   
   methods: {
-    addRecipe: function() {
-      this.$firestore.recipes.add({
-        name: this.newRecipe,
-      });
-      this.newRecipe = "";
-    },
-    
-    deleteRecipe: function(recipe) {
-      this.$firestore.recipes.doc(recipe[".key"]).delete();
-    },
     logout: function() {
       auth.signOut().then( () => {
         this.$router.go({path: this.$router.path})
