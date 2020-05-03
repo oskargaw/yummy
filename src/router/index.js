@@ -13,9 +13,7 @@ const routes = [{
     {
         path: "/login",
         name: "Login",
-        meta: {
-            requiresGuest: true
-        },
+        
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
@@ -25,9 +23,7 @@ const routes = [{
     {
         path: "/signup",
         name: "SignUp",
-        meta: {
-            requiresGuest: true
-        },
+        
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
@@ -64,9 +60,7 @@ const routes = [{
     {
         path: "/favourites",
         name: "Favourites",
-        meta: {
-            requiresAuth: true
-        },
+        
         component: () =>
             import("../views/Favourites.vue"),
     },
