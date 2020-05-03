@@ -19,6 +19,11 @@
     <div id="about">about food</div>
     <div id="eating" class="text-bold">is eating</div>
     <div id="everyone">~ literally everyone</div>
+    <div class="quote">
+      <div class="quote__text" v-show="quote.text != null">"{{ quote.text }}"</div>
+      <div class="quote__author" v-show="quote.author != null">~{{ quote.author }}</div>
+      <button id="getQuotesBtn" @click="getQuote" class="btn">Get some food for thought</button>
+    </div>
   </div>
 </template>
 
@@ -29,7 +34,8 @@ export default {
   name: "home",
   data() {
     return {
-      recipePreferences: ""
+      recipePreferences: "",
+      quote: {}
     };
   },
   methods: {
@@ -43,6 +49,18 @@ export default {
             newResults: json.results
           });
           this.$router.push("/results");
+        });
+    },
+    getQuote: function() {
+      const min = 0;
+      const max = 1000;
+
+      const randomQuoteIndex = Math.floor(Math.random() * (max - min)) + min;
+
+      fetch("https://type.fit/api/quotes")
+        .then(response => response.json())
+        .then(data => {
+          this.quote = data[randomQuoteIndex];
         });
     }
   }
