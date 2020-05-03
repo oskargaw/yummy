@@ -4,13 +4,20 @@ import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
 import VueFirestore from "vue-firestore";
+import { firebase } from "@firebase/app";
+import "./firebase"
 
 Vue.config.productionTip = false;
 
 Vue.use(VueFirestore);
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+let app;
+firebase.auth().onAuthStateChanged( () => {
+  if(!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+})

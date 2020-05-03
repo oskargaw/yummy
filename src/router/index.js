@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import { firebase } from "@firebase/app";
 
 Vue.use(VueRouter);
 
@@ -13,6 +14,9 @@ const routes = [
   {
     path: "/login",
     name: "Login",
+    meta: {
+      requiresGuest: true
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -22,6 +26,9 @@ const routes = [
   {
     path: "/signup",
     name: "SignUp",
+    meta: {
+      requiresGuest: true
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -44,5 +51,33 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+router.beforeEach((to, from, next) => {
+  if(to.matched.some(record => record.meta.requiresAuth)) {
+    if(!firebase.auth().currentUser){
+      next({
+        path: '/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next();
+    }
+  } else if(to.matched.some(record => record.meta.requiresGuest)) {
+      if(firebase.auth().currentUser){
+        next({
+          path: '/',
+          query: {
+            redirect: to.fullPath
+          }
+        })
+      } else {
+        next();
+      }
+  } else {
+    next();
+  }
+})
 
 export default router;

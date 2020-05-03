@@ -1,4 +1,4 @@
-<style lang="scss">
+<style scoped lang="scss">
 @import "@/assets/scss/Login.scss";
 </style>
 <template>
@@ -9,16 +9,17 @@
         <img src="@/assets/undraw_cooking_lyxy.svg" />
       </div>
       <div class="login-content">
-        <form action="index.html">
+        <form>
           <img src="@/assets/undraw_profile_pic_ic5t.svg" />
           <h2 class="title">Welcome</h2>
+          <div class="error"></div>
           <div class="input-div one">
             <div class="i">
-              <i class="fas fa-user"></i>
+              <i class="fas fa-envelope"></i>
             </div>
             <div class="div">
-              <h5>Username</h5>
-              <input type="text" class="input" />
+              <h5>E-mail</h5>
+              <input v-model="email" @keyup.enter="login" type="email" class="input" />
             </div>
           </div>
           <div class="input-div pass">
@@ -27,19 +28,95 @@
             </div>
             <div class="div">
               <h5>Password</h5>
-              <input type="password" class="input" />
+              <input v-model="password" @keyup.enter="login" type="password" class="input" />
             </div>
           </div>
-          <a id="forgot" href="#">Forgot Password?</a>
-          <input type="submit" class="btn" value="Login" />
+           <div class="div social">
+            <a @click="facebookSignIn">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a @click="twitterSignIn">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a @click="googleSignIn">
+              <i class="fab fa-google"></i>
+            </a>
+            <a>
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <button @click="login" class="btn">Login</button>
         </form>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { auth } from "../firebase";
+import { firebase } from "@firebase/app"
+
 export default {
   name: "Login",
+  data() {
+    return {
+      email: '',
+      password: ''
+    }
+  },
+  methods: {
+    login: function(e) {
+      auth.signInWithEmailAndPassword(this.email, this.password).
+        then(user => {
+          console.log(`Logged in as ${user.user.email}`)
+          this.$router.go({path: this.$router.path})
+        },
+        err => {
+          console.log(err.message)
+          document.querySelector(".error").innerHTML = err.message
+        })
+        e.preventDefault()
+    },
+    googleSignIn: function() {
+      var provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    facebookSignIn: function() {
+      var provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    twitterSignIn: function() {
+      var provider = new firebase.auth.TwitterAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    },
+    githubSignIn: function() {
+      var provider = new firebase.auth.GithubAuthProvider();
+      auth.signInWithPopup(provider).then(function(result) {
+        var user = result.user;
+        console.log(`Signed in as ${user.email}`)
+        location.reload()
+      }).catch(function(error) {
+        console.log(error.message)
+      });
+    }
+  },
   mounted: function() {
     const inputs = document.querySelectorAll(".input");
 

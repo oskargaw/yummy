@@ -7,18 +7,30 @@
       <label for="toggle" id="hamburger">&#9776;</label>
       <input type="checkbox" id="toggle" />
       <ul class="nav justify-content-end">
+        <span v-if="isLoggedIn" class="nav-link divider">
+          <li class="email">
+            <i class="fas fa-user"></i>
+            {{" " + currentUser }}
+            </li>
+        </span>
         <router-link class="nav-link divider" to="/">
           <li class="nav-item">Home</li>
         </router-link>
         <router-link class="nav-link divider" to="/fridge">
           <li class="nav-item">Fridge</li>
         </router-link>
-        <router-link class="nav-link divider" to="/login">
+        <router-link v-if="isLoggedIn" class="nav-link divider" to="/favourites">
+          <li class="nav-item">Favourites</li>
+        </router-link>
+        <router-link v-if="!isLoggedIn" class="nav-link divider" to="/login">
           <li class="nav-item">Login</li>
         </router-link>
-        <router-link class="nav-link divider" to="/signup">
+        <router-link v-if="!isLoggedIn" class="nav-link divider" to="/signup">
           <li class="nav-item">Sign up</li>
         </router-link>
+        <span v-if="isLoggedIn" @click="logout" class="nav-link divider">
+          <li id="logout" class="nav-item">Log out</li>
+        </span>
         <img alt="logo" src="./assets/logo_transparent.png" id="logo-bottom" />
       </ul>
     </div>
@@ -43,6 +55,8 @@
 
 <script>
 import { db } from "./firebase";
+import { auth } from "./firebase";
+
 
 export default {
   name: "app",
@@ -51,6 +65,8 @@ export default {
     return {
       recipes: [],
       newRecipe: "",
+      isLoggedIn: false,
+      currentUser: false
     };
   },
   
@@ -71,6 +87,17 @@ export default {
     deleteRecipe: function(recipe) {
       this.$firestore.recipes.doc(recipe[".key"]).delete();
     },
+    logout: function() {
+      auth.signOut().then( () => {
+        this.$router.go({path: this.$router.path})
+      })
+    }
+  },
+  created() {
+    if(auth.currentUser) {
+      this.isLoggedIn = true
+      this.currentUser = auth.currentUser.email
+    }
   },
   mounted() {
     const links = document.querySelectorAll(".nav-link")

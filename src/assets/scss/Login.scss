@@ -8,7 +8,7 @@
 
 .LoginContainer {
     width: 96vw;
-    height: 100vh;
+    height: calc(100vh - 90px);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 7rem;
@@ -57,7 +57,7 @@ form {
 }
 
 .login-content .input-div.one {
-    margin-top: 0;
+    margin-top: 15px;
 }
 
 .i {
@@ -173,7 +173,7 @@ form {
     background-position: right;
 }
 
-.social-media a {
+.social a {
     font-size: 1.8rem;
     display: inline-block;
     padding: 1.3vw;
@@ -183,17 +183,26 @@ form {
     -moz-transition: all .55s ease;
     -ms-transition: all .55s ease;
     -o-transition: all .55s ease;
+    cursor: pointer;
 }
 
-.social-media a:hover {
+.social a:hover {
     color: gray;
+}
+
+.error {
+    display: inline;
+    width: 3.2vw;
+    color: red;
+    font-size: 0.9rem;
+    transition: .3s;
 }
 
 @media only screen and (max-width: 1050px) {
     .LoginContainer {
         grid-gap: 5rem;
     }
-    .social-media a {
+    .social a {
         font-size: 1.3rem;
         display: inline-block;
         padding: 1.8vw;
@@ -231,6 +240,12 @@ form {
         margin-right: 0.2vw;
         display: inline-block;
         padding: 1.6vw;
+    }
+}
+
+@media only screen and (max-width: 679px) {
+    .LoginContainer {
+      height: calc(100vh - 60px)
     }
 }
 
